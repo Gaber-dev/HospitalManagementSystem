@@ -1,0 +1,5 @@
+Dependency Inversion Principle:  High-level module creating object like Controller should not depend on Low-level module, Like Service, and Should Depend on Abstraction(Interface).
+Dependency Injection: The tool that makes objects from low-level classes at run time and passes them to the high-level object constructor.
+Singleton: DI creates it once for the  entire app lifetime, shared by everyone
+Scoped: once per HTTP request
+Transient: Every time  requested per HTTP request
