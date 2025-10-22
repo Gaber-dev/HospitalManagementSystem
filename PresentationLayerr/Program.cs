@@ -26,6 +26,8 @@ namespace PresentationLayer
             builder.Services.AddScoped<IEmployeeService, EmployeeService>();
             builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
             builder.Services.AddScoped<IDoctorService, DoctorService>();
+            builder.Services.AddScoped<IReservationRepository, ReservationRepository>();
+            builder.Services.AddScoped<IReservationService, ReservationService>();
 
 
             builder.Services.AddControllers();
@@ -53,5 +55,6 @@ namespace PresentationLayer
         }
     }
 }
+
 
 
