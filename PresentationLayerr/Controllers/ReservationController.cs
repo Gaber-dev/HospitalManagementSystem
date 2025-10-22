@@ -18,7 +18,7 @@ namespace PresentationLayer.Controllers
         [HttpGet]
         public async Task<ActionResult<GetReservationDto>> GetAllReservation()
         {
-           return Ok(await _service.GetAllReservation());
+            return Ok(await _service.GetAllReservation());
         }
 
         [HttpPost]
@@ -27,5 +27,21 @@ namespace PresentationLayer.Controllers
             await _service.AddReservation(dto);
             return Ok();
         }
+
+        [HttpGet("Name and Date")]
+        public async Task<ActionResult<GetReservationDto>> GetReserByDateandPName(DateTime time , string pname)
+        {
+            var res = await _service.GetResBypatnameanddate(time, pname);
+            return Ok(res);
+        }
+
+
+       [HttpPut]
+       public async Task<ActionResult> UpdateReservation(UpdateReservationDto dto)
+       {
+          await _service.UpdateReservation(dto);
+          return Ok();
+       } 
     }
 }
+
