@@ -22,7 +22,10 @@ namespace PresentationLayer
             builder.Services.AddScoped<IPatientRepository , PatientRepository>();
             builder.Services.AddScoped<IClinicRepository, ClinicRepository>();
             builder.Services.AddScoped<IClinicService, ClinicService>();
-
+            builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+            builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
+            builder.Services.AddScoped<IDoctorService, DoctorService>();
 
 
             builder.Services.AddControllers();
@@ -50,4 +53,5 @@ namespace PresentationLayer
         }
     }
 }
+
 
