@@ -23,10 +23,34 @@ namespace PresentationLayer.Controllers
         }
 
 
+
+        [HttpGet("Name")]
+        public async Task<ActionResult<getEmployeeDto>> GetEmployeeByName(string name)
+        {
+            var res = await _service.GetEmployeeByName(name);
+            return Ok(res);
+        }
+
+
         [HttpPost]
         public async Task<ActionResult<AddEmployeeDto>> AddEmployee(AddEmployeeDto dto)
         {
             await _service.AddEmployee(dto);
+            return NoContent();
+        }
+
+        [HttpPut]
+        public async Task<ActionResult> UpdateEmployee(UpdateEmployeeDto dto)
+        {
+            await _service.UpdateEmployee(dto);
+            return NoContent();
+        }
+
+
+        [HttpDelete]
+        public async Task<ActionResult> DeleteEmployee(string name)
+        {
+            await _service.DeleteEmployee(name);
             return NoContent();
         }
     }
