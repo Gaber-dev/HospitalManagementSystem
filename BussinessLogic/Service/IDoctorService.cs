@@ -15,5 +15,7 @@ namespace BussinessLogic.Service
         Task AddDoctor(AddDoctorDto dto);
         Task UpdateDoctor(UpdateDoctorDto dto);
         Task DeleteDoctor(string name, string specializedin);
+        Task<GetDoctorPaginatedDto> Getpaginateddoctors(int pageNumber, int pageSize);
     }
 }
+
