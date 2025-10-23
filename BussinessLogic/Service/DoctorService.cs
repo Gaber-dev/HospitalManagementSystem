@@ -111,6 +111,31 @@ namespace BussinessLogic.Service
             await _repo.DeleteDoctor(name , specializedin);
         }
 
+        public async Task<GetDoctorPaginatedDto> Getpaginateddoctors(int pageNumber , int pageSize)
+        {
+            var totalcount =  await _repo.GetTotalDoctorsCount();
+            var doctors =await _repo.GetAllPaginatedDoctors(pageNumber, pageSize);
+
+            var doctordto = doctors.Select(d => new GetDoctorDto
+        {
+            Name = d.Name,
+            Phone = d.Phone,
+            Email = d.Email,
+            SpecialIn = d.SpecialIn,
+            ClinicName = d.Clinic.Name
+         });
+
+
+         return new GetDoctorPaginatedDto
+         {
+            Items = doctordto,
+            Totalcount = totalcount,
+            pageSize = pageSize,
+            pageNumber = pageNumber
+         };
+   }
+
 
     }
 }
+
