@@ -50,5 +50,13 @@ namespace PresentationLayer.Controllers
             return Ok();
         }
 
+        [HttpGet("Paginated")]
+        public async Task<ActionResult<GetDoctorPaginatedDto>> GetPaginatedDoctors(int pageNumber = 1 , int pageSize = 10)
+        {
+            var res = await _service.Getpaginateddoctors(pageNumber, pageSize);
+            return Ok(res); 
+        }
+
     }
 }
+
