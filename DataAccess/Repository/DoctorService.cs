@@ -112,5 +112,24 @@ namespace BussinessLogic.Service
         }
 
 
+        // Apply pagination
+        // total count of doctor records in Database all
+        public async Task<int> GetTotalDoctorsCount()
+        {
+            var res = await _context.Doctor.CountAsync();
+            return res;
+        }
+
+        public async Task<IEnumerable<Doctor>> GetAllPaginatedDoctors(int pageNumber , int pageSize) // 1,10
+        {
+            return await _context.Doctor
+                 .Include(c => c.Clinic)
+                 .Skip((pageNumber-1)*pageSize) // skip 0 items
+                 .Take(pageSize) // take next 10 items
+                 .ToListAsync();
+        }
+
+
     }
 }
+
