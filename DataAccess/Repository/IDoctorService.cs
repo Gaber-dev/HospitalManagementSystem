@@ -15,5 +15,8 @@ namespace BussinessLogic.Service
         Task AddDoctor(AddDoctorDto dto);
         Task UpdateDoctor(UpdateDoctorDto dto);
         Task DeleteDoctor(string name, string specializedin);
+        Task<int> GetTotalDoctorsCount();
+        Task<IEnumerable<Doctor>> GetAllPaginatedDoctors(int pageNumber, int pageSize);
     }
 }
+
