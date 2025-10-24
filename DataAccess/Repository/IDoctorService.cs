@@ -17,6 +17,8 @@ namespace BussinessLogic.Service
         Task DeleteDoctor(string name, string specializedin);
         Task<int> GetTotalDoctorsCount();
         Task<IEnumerable<Doctor>> GetAllPaginatedDoctors(int pageNumber, int pageSize);
+        Task<IEnumerable<Doctor>> SearchDoctor(string name);
     }
 }
+
 
