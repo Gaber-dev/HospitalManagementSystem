@@ -129,7 +129,26 @@ namespace BussinessLogic.Service
                  .ToListAsync();
         }
 
+        public async Task<IEnumerable<Doctor>> SearchDoctor(string name)
+        {
+            if (string.IsNullOrEmpty(name) || name == "string")
+            {
+                throw new Exception("Please Enter Name first..");
+            }
+            else
+            {
+
+              return await _context.Doctor.Include(c => c.Clinic)
+              .Where(d => d.Name.Contains(name) ||
+                     d.SpecialIn.Contains(name) ||
+                     d.Clinic.Name.Contains(name))
+              .ToListAsync();
+
+            }
+          }
+
 
     }
 }
+
 
