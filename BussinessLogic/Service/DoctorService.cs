@@ -136,6 +136,24 @@ namespace BussinessLogic.Service
    }
 
 
+   public async Task<IEnumerable<GetDoctorDto>> SearchAboutDoctor(string name)
+   {
+            var resfromrepo = await _repo.SearchDoctor(name);
+
+            var restocontroller = resfromrepo.Select(d => new GetDoctorDto
+            {
+                Name = d.Name,
+                Phone = d.Phone,
+                Email = d.Email,
+                SpecialIn = d.SpecialIn,
+                ClinicName = d.Clinic.Name
+            });
+    return restocontroller;
+}
+
+
+
     }
 }
+
 
