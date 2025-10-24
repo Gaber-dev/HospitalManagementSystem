@@ -57,6 +57,14 @@ namespace PresentationLayer.Controllers
             return Ok(res); 
         }
 
+        [HttpGet("Search")]
+        public async Task<ActionResult<GetDoctorDto>> Searchaboutdoctor(string name)
+        {
+             var res = await _service.SearchAboutDoctor(name);
+             return Ok(res);
+        }
+
     }
 }
+
 
